@@ -4,7 +4,7 @@ export interface IResponseData {
 interface IBuildResponse {
 	success: boolean
 	message: string
-	data: IResponseData | Array<IResponseData> | null
+	data?: IResponseData | IResponseData[] | void | null
 }
 
 export const buildResponse = ({ success, message, data }: IBuildResponse) => ({

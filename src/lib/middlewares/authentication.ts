@@ -18,6 +18,7 @@ const isAuthenticated = async (req: IRequest, res: IResponse, next: INext) => {
 		req.user = {
 			id: decoded.userId,
 			email: decoded.email,
+			isAdmin: decoded.isAdmin,
 		}
 
 		next()

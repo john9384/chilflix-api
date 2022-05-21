@@ -7,7 +7,7 @@ class BaseRepository {
 		this.Model = Model
 	}
 
-	async fetch<TQuery, TReturn>(query: TQuery): Promise<TReturn> {
+	async fetch<TQuery, TReturn>(query?: TQuery): Promise<TReturn> {
 		const entityList: TReturn = await this.Model.find(query)
 
 		return entityList

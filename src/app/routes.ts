@@ -1,6 +1,6 @@
 import express from 'express'
 import { authRoutes } from '../components/auth'
-import { userRoutes } from '../components/user/routes'
+import { userRoutes } from '../components/user'
 import config from '../config'
 
 const router = express.Router()
