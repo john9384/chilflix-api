@@ -1,7 +1,7 @@
 import Joi from 'joi'
 
 export const VSignup = Joi.object({
-	name: Joi.string().min(3).max(50).label('name').required(),
+	username: Joi.string().min(3).max(50).label('username').required(),
 	email: Joi.string().email({ minDomainSegments: 2 }).required().label('email'),
 	password: Joi.string()
 		.min(8)

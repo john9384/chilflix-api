@@ -1,12 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
+import { IPayload } from './jwt-types'
 
-interface User {
-	id: string | number
-	email: string
-	isAdmin: boolean
-}
 export interface IRequest extends Request {
-	user?: User
+	user?: IPayload
 }
 
 export interface IResponse extends Response {}

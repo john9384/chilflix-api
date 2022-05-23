@@ -1,8 +1,7 @@
 import User from './model'
+import BaseRepository from '../../db/repository/BaseRepository'
 import { ICreateUser, IUpdateUser, IFetchUser } from './types/dtos'
 import { IUser } from './types/model'
-
-import BaseRepository from '../../db/repository/BaseRepository'
 
 class UserRepository extends BaseRepository {
 	fetchUsers = async (query: IFetchUser): Promise<IUser[] | []> => {

@@ -1,7 +1,7 @@
 import { CREATED, OK } from '../../lib/constants/http-status'
 import { buildResponse } from '../../lib/utils/response-builder'
 import { IRequest, IResponse } from '../../app/types/http'
-import { userService } from '.'
+import * as userService from './services'
 
 export const updateUser = async (req: IRequest, res: IResponse) => {
 	const userId = String(req.user?.id)

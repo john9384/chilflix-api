@@ -6,9 +6,7 @@
 	"author": "John Damilola Ogungbure <jogungbure@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"prestart": "yarn lint",
 		"start": "ts-node .",
-		"predev": "yarn lint",
 		"dev": "nodemon",
 		"build": "tsc",
 		"lint": "eslint src/**/*.ts",
@@ -46,6 +44,7 @@
 		"eslint": "^8.13.0",
 		"eslint-config-airbnb-typescript": "^17.0.0",
 		"eslint-plugin-import": "^2.26.0",
-		"husky": "^7.0.4"
+		"husky": "^7.0.4",
+		"nodemon": "^2.0.16"
 	}
 }

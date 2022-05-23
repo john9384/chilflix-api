@@ -34,13 +34,13 @@ export const login = async (formData: ILogin) => {
 	}
 
 	const encodedData = jwtEncode({
-		userId: user?.id,
+		id: user?.id,
 		email: user?.email,
 		isAdmin: user?.isAdmin,
 	})
 
 	return {
 		email: user?.email,
-		accessToken: encodedData,
+		token: encodedData,
 	}
 }

@@ -4,7 +4,7 @@ import catchErrors from '../../lib/utils/error-boundary'
 
 const authRoutes = express.Router()
 
-authRoutes.post('/signup', catchErrors(authController.register))
+authRoutes.post('/register', catchErrors(authController.register))
 authRoutes.post('/login', catchErrors(authController.login))
 
 export default authRoutes

@@ -1,8 +1,8 @@
-interface List {
-	id: string
-	title: string
-	genre: string
-	content: string
+interface IList {
+	id?: string
+	title?: string
+	genre?: string
+	content?: string
 }
 
-export default List
+export default IList

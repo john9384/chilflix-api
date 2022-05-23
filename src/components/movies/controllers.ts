@@ -71,7 +71,7 @@ export const getRandomMovie = async (req: IRequest, res: IResponse) => {
 
 export const deleteMovie = async (req: IRequest, res: IResponse) => {
 	const movieId = String(req.params.id)
-	const responseData = await movieService.deleteMovie({ id: movieId })
+	const responseData = await movieService.deleteMovie(movieId)
 	return res.status(OK).send(
 		buildResponse({
 			success: true,

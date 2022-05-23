@@ -17,25 +17,25 @@ app.use('/', express.static(path.join(__dirname, 'src/app/public')))
 app.use(morganMiddleware)
 
 app.get('/', (req, res) => {
-  res.send({
-    app: process.env.APP_NAME,
-    message: `${process.env.APP_NAME} is running`,
-    status: 200,
-  })
+	res.send({
+		app: process.env.APP_NAME,
+		message: `${process.env.APP_NAME} is running`,
+		status: 200,
+	})
 })
 app.use('/', routes)
 
 app.get('*', (_, res) => res.send('Invalid route'))
 
 app.use((error: IError, req: IRequest, res: IResponse, next: INext) => {
-  Logger.error(error.stack)
+	Logger.error(error.stack)
 
-  return res.status(error.status || 500).send({
-    success: false,
-    message: error.message || 'Failed',
-    data: error.data || {},
-    error,
-  })
+	return res.status(error.status || 500).send({
+		success: false,
+		message: error.message || 'Failed',
+		data: error.data || {},
+		error,
+	})
 })
 
 export default app
