@@ -2,6 +2,7 @@ import { UNAUTHORIZED } from '../constants/http-status'
 import { jwtDecode } from '../helpers/jwt'
 import { IRequest, IResponse, INext } from '../../app/types/http'
 import { CustomError } from '../helpers/error'
+import catchErrors from '../utils/error-boundary'
 
 const isAuthenticatedAdmin = async (
 	req: IRequest,
@@ -17,29 +18,29 @@ const isAuthenticatedAdmin = async (
 
 	const token: string = req?.header('Authorization')?.split(' ')[1] || ''
 
-	try {
-		const decoded: any = jwtDecode(token)
+	// try {
+	const decoded: any = jwtDecode(token)
 
-		if (!decoded.isAdmin) {
-			throw new CustomError({
-				message: 'Unauthorized access',
-				status: UNAUTHORIZED,
-			})
-		}
-
-		req.user = {
-			id: decoded.userId,
-			email: decoded.email,
-			isAdmin: decoded.isAdmin,
-		}
-
-		next()
-	} catch (error: any) {
+	if (!decoded.isAdmin) {
 		throw new CustomError({
+			message: 'Unauthorized access',
 			status: UNAUTHORIZED,
-			message: error.message,
 		})
 	}
+
+	req.user = {
+		id: decoded.id,
+		email: decoded.email,
+		isAdmin: decoded.isAdmin,
+	}
+
+	next()
+	// } catch (error: any) {
+	// 	throw new CustomError({
+	// 		status: UNAUTHORIZED,
+	// 		message: error.message,
+	// 	})
+	// }
 }
 
-export default isAuthenticatedAdmin
+export default catchErrors(isAuthenticatedAdmin)

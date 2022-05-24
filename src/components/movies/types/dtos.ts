@@ -25,6 +25,7 @@ export interface IUpdateMovie {
 	isSeries?: boolean
 }
 export interface IQueryMovie {
+	_id?: string
 	id?: string
 	title?: string
 	year?: string

@@ -6,7 +6,7 @@ import isAuthenticatedAdmin from '../../lib/middlewares/isAuthenticatedAdmin'
 
 const userRoutes = Router()
 
-userRoutes.put('/:id', isAuthenticated, catchErrors(userController.updateUser))
+userRoutes.put('/', isAuthenticated, catchErrors(userController.updateUser))
 userRoutes.get(
 	'/',
 	isAuthenticatedAdmin,

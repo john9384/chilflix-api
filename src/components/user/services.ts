@@ -18,13 +18,19 @@ export const getUsers = async (
 
 	return users
 }
-export const updateUser = async (
-	query: IFetchUser,
-	data: IUpdateUser,
-): Promise<IUser | null> => {
+export const updateUser = async (query: IFetchUser, data: IUpdateUser) => {
+	const existingUser = await userRepository.fetchOneUser(query)
+	if (!existingUser) {
+		throw new CustomError({
+			message: 'User with query does not exist',
+			status: NOT_FOUND,
+		})
+	}
 	const updatedUser = await userRepository.updateUser(query, data)
 
-	return updatedUser
+	return {
+		email: updatedUser?.email,
+	}
 }
 
 export const getUser = async (query: IFetchUser): Promise<IUser> => {

@@ -10,8 +10,8 @@ const router = express.Router()
 const { API_PREFIX } = config
 
 router.use(`/${API_PREFIX}/auth`, authRoutes)
-router.use(`/${API_PREFIX}/user`, userRoutes)
-router.use(`/${API_PREFIX}/movie`, movieRoutes)
+router.use(`/${API_PREFIX}/users`, userRoutes)
+router.use(`/${API_PREFIX}/movies`, movieRoutes)
 router.use(`/${API_PREFIX}/list`, listRoutes)
 
 export default router

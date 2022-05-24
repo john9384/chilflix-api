@@ -4,10 +4,13 @@ export interface ICreateUser {
 	password: string
 }
 
-export interface IUpdateUser {}
+export interface IUpdateUser {
+	username?: string
+	email?: string
+}
 
 export interface IFetchUser {
-	id?: string
+	_id?: string
 	email?: string
 	isAdmin?: boolean
 }

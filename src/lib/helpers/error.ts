@@ -1,4 +1,5 @@
 import { IResponseData } from '../utils/response-builder'
+
 export interface IError {
 	message: string
 	data?: IResponseData
@@ -9,7 +10,9 @@ export interface IError {
 
 class BaseError extends Error {
 	data?: IResponseData
+
 	type: string
+
 	status: number
 }
 

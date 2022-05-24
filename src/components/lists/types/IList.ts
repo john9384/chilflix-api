@@ -1,4 +1,5 @@
 interface IList {
+	_id?: string
 	id?: string
 	title?: string
 	genre?: string

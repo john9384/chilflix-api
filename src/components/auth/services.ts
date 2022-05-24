@@ -38,7 +38,7 @@ export const login = async (formData: ILogin) => {
 		email: user?.email,
 		isAdmin: user?.isAdmin,
 	})
-
+	console.log(encodedData)
 	return {
 		email: user?.email,
 		token: encodedData,
