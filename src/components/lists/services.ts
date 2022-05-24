@@ -27,25 +27,7 @@ export const deleteList = async (id: string) => {
 }
 
 export const getList = async (query: IQueryList): Promise<IList | null> => {
-	const typeQuery = query.type
-	const genreQuery = query.genre
-	// 	let list = []
-	// 	try {
-	// 		if (typeQuery) {
-	// 			if (genreQuery) {
-	// 				list = await List.aggregate([
-	// 					{ $sample: { size: 10 } },
-	// 					{ $match: { type: typeQuery, genre: genreQuery } },
-	// 				])
-	// 			} else {
-	// 				list = await List.aggregate([
-	// 					{ $sample: { size: 10 } },
-	// 					{ $match: { type: typeQuery } },
-	// 				])
-	// 			}
-	// 		} else {
-	// 			list = await List.aggregate([{ $sample: { size: 10 } }])
-	// 		}
+	const list = await listRepository.aggregate({ size: 10, ...query })
 
-	return {}
+	return list
 }

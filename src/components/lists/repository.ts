@@ -31,6 +31,24 @@ class ListRepository extends BaseRepository {
 	}
 
 	deleteList = async (id?: string) => this.destroy(id)
+
+	aggregate = async ({ size = 10, type, genre }: IQueryList) => {
+		let list = []
+		if (type && genre) {
+			list = await this.Model.aggregate([
+				{ $sample: { size } },
+				{ $match: { type, genre } },
+			])
+		} else if (type) {
+			list = await this.Model.aggregate([
+				{ $sample: { size } },
+				{ $match: { type } },
+			])
+		} else {
+			list = await this.Model.aggregate([{ $sample: { size } }])
+		}
+		return list
+	}
 }
 
 const listRepository = new ListRepository(List)

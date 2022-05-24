@@ -13,4 +13,5 @@ export interface IQueryList {
 	title?: string
 	genre?: string
 	type?: string
+	size?: number
 }
