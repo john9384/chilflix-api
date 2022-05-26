@@ -7,6 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "ts-node .",
+		"predev": "yarn lint",
 		"dev": "nodemon",
 		"build": "tsc",
 		"lint": "eslint src/**/*.ts",

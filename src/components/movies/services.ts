@@ -48,23 +48,14 @@ export const getMovies = async (
 	return movies
 }
 export const getMovie = async (query: IQueryMovie) => {
-	if (query.rand) {
-		// 	let movie
-		// 	try {
-		// 		if (type === 'series') {
-		// 			movie = await Movie.aggregate([
-		// 				{ $match: { isSeries: true } },
-		// 				{ $sample: { size: 1 } },
-		// 			])
-		// 		} else {
-		// 			movie = await Movie.aggregate([
-		// 				{ $match: { isSeries: false } },
-		// 				{ $sample: { size: 1 } },
-		// 			])
-		// 		}
+	const { rand, type } = query
+	let movie
+
+	if (rand) {
+		movie = await movieRepository.aggregate({ type })
 	}
 
-	const movie = await movieRepository.fetchOneMovie(query)
+	movie = await movieRepository.fetchOneMovie(query)
 
 	return movie
 }

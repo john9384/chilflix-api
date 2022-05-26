@@ -34,4 +34,5 @@ export interface IQueryMovie {
 	isSeries?: boolean
 	rand?: boolean
 	type?: string
+	size?: number
 }

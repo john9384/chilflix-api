@@ -34,6 +34,23 @@ class MovieRepository extends BaseRepository {
 	}
 
 	deleteMovie = async (id?: string) => this.destroy(id)
+
+	aggregate = async ({ size = 1, type }: IQueryMovie) => {
+		let movie
+		if (type === 'series') {
+			movie = await this.Model.aggregate([
+				{ $match: { isSeries: true } },
+				{ $sample: { size } },
+			])
+		} else {
+			movie = await this.Model.aggregate([
+				{ $match: { isSeries: false } },
+				{ $sample: { size } },
+			])
+		}
+
+		return movie
+	}
 }
 
 const movieRepository = new MovieRepository(Movie)

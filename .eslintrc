@@ -24,11 +24,14 @@
 		"array-bracket-spacing": "off",
 		"block-spacing": "off",
 		"camelcase": ["warn", { "properties": "always" }],
+		"@typescript-eslint/naming-convention": "warn",
+		"class-methods-use-this": "off",
 		"comma-dangle": "warn",
 		"@typescript-eslint/comma-dangle": "warn",
 		"computed-property-spacing": ["warn", "never"],
 		"default-case": "warn",
 		"linebreak-style": "off",
+		"import/newline-after-import": "warn",
 		"indent": [
 			"warn",
 			"tab",
@@ -43,6 +46,8 @@
 				"SwitchCase": 1
 			}
 		],
+		"@typescript-eslint/lines-between-class-members": "off",
+		"max-classes-per-file": ["warn", 5],
 		"max-len": [
 			"off",
 			{
@@ -94,7 +99,10 @@
 		],
 		"no-var": "warn",
 		"object-curly-spacing": ["warn", "always"],
+		"object-curly-newline": "off",
+		"@typescript-eslint/object-curly-spacing": ["warn", "always"],
 		"prefer-const": "off",
+		"import/prefer-default-export": "off",
 		"quotes": ["warn", "single"],
 		"@typescript-eslint/quotes": ["warn", "single"],
 		"semi": ["warn", "never"],
@@ -102,8 +110,12 @@
 	},
 	"overrides": [
 		{
-			"files": ["src/scripts/*.ts"],
-			"rules": { "no-console": "off" }
+			"files": ["src/scripts/*.ts", "src/db/migrations/*.ts"],
+			"rules": {
+				"no-console": "off",
+				"quotes": "off",
+				"@typescript-eslint/quotes": "off"
+			}
 		}
 	]
 }
